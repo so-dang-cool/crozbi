@@ -65,15 +65,16 @@ REPO="$1"
 mkdir -p "$CZBI_HOME"
 cd "$CZBI_HOME" || exit 1
 
-#if [[ $REPO =~ ^[:word:-]+/[:word:-]+$ ]]
-#then
-#    REPO_URL="https://github.com/$REPO"
-#else
-#    REPO_URL="$REPO"
-#    REPO="$(echo "$REPO" | sed -E 's/^\s*.*:\/\///g')"
-#fi
+if [[ $REPO =~ ^[A-Za-z0-9_-]+/[A-Za-z0-9_-]+$ ]]
+then
+    REPO_URL="https://github.com/$REPO.git"
+else
+    REPO_URL="$REPO"
+    REPO="$(echo "$REPO" | sed -E 's/^\s*.*:\/\///' | sed -E 's/\.git$//')"
+fi
 
-REPO_URL="https://github.com/$REPO"
+echo "REPO:       $REPO"
+echo "REPO_URL:   $REPO_URL"
 
 if [[ -d $REPO ]]
 then
