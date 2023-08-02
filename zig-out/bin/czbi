@@ -39,6 +39,12 @@ zig build
 
 for exe in $(find zig-out/bin -type f)
 do
+    existing="$CZBI_BIN/$(basename "$exe")"
+    if [[ -f $existing ]]
+    then
+        rm "$existing"
+    fi
+
     ln -s "$PWD/$exe" "$CZBI_BIN/"
 done
 
