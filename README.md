@@ -21,7 +21,7 @@ USAGE: czbi REPO
        czbi uninstall EXE
 
 czbi is a script for installing Zig-built executables. To customize it, edit
-the script or fork the repository yourself.
+the script or fork the repository for yourself.
 
 czbi REPO
     Clone, zig build, and install whatever is produced by REPO. The clone
@@ -31,6 +31,11 @@ czbi REPO
     If the REPO is in the format name/project then it's expanded as a github
     https url like https://github.com/name/project -- Other formats are passed
     to git clone directly.
+
+    If the REPO is already cloned, instead of a git clone, a git pull will be
+    performed.
+
+    The build performed will simply be 'zig build' with no other arguments.
 
     After a build, czbi will produce symbolic links in $HOME/.local/bin for any
     binaries found in a project-local zig-out/bin/ directory.
@@ -52,7 +57,8 @@ czbi uninstall EXE
 
 ## Installing
 
-The recommended way to install czbi is to run something like this in bash:
+The recommended way to install czbi for the first time ever is to run something
+like this in bash:
 
 ```
 CZBI_BIN="$HOME/.local/bin"
@@ -61,10 +67,10 @@ CZBI_REPO="booniepepper/czbi"
 
 mkdir -p "$CZBI_HOME"
 git clone "https://github.com/$CZBI_REPO" "$CZBI_HOME/$CZBI_REPO"
-ln -s "$CZBI_BIN/czbi" "$CZBI_HOME/$CZBI_REPO/zig-out/bin/czbi"
+ln -s "$CZBI_HOME/$CZBI_REPO/zig-out/bin/czbi" "$CZBI_BIN/czbi"
 ```
 
-Minus a zig build, that is basically what czbi does anyway.
+Minus a Zig build, that is basically everything czbi does.
 
 ## Updating
 
@@ -73,6 +79,8 @@ With czbi installed, you can update to the most recent version with:
 ```
 czbi booniepepper/czbi
 ```
+
+If you've forked the repository, update the REPO argument as needed.
 
 ## Notes on safety and being excellent
 

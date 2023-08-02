@@ -1,4 +1,41 @@
 #!/bin/bash
 
-echo 'Hello world!'
+set -euo pipefail
+
+CZBI_BIN="$HOME/.local/bin"
+CZBI_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}/czbi"
+CZBI_REPO="booniepepper/czbi"
+
+case "$1" in
+    home)       echo "$CZBI_HOME"
+                exit 0
+                ;;
+
+    uninstall)  set -x
+                rm "$CZBI_BIN/$2"
+                exit 0
+                ;;
+esac
+
+# Ok we're installing!
+
+set -x
+
+repo="$1"
+
+mkdir -p "$CZBI_HOME"
+cd "$CZBI_HOME" || exit 1
+
+if [[ -d $CZBI_REPO ]]
+then
+    cd "$CZBI_REPO" || exit 1
+    git pull
+else
+    git clone "https://github.com/$CZBI_REPO" "$CZBI_REPO"
+    cd "$CZBI_REPO" || exit 1
+fi
+
+zig build
+
+ln -s "zig-out/bin/"* "$CZBI_BIN/"
 
