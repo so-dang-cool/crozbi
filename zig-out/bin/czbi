@@ -2,11 +2,12 @@
 
 set -euo pipefail
 
+CZBI_VERSION='1.0'
 CZBI_BIN="$HOME/.local/bin"
 CZBI_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}/czbi"
 
 print_usage() {
-    echo 'czbi 1.0'
+    echo "czbi $CZBI_VERSION"
     echo ''
     echo 'USAGE: czbi REPO'
     echo '       czbi home'
@@ -50,6 +51,11 @@ case "$1" in
                     ;;
 
     home)           echo "$CZBI_HOME"
+                    exit 0
+                    ;;
+
+    version|--version|-V)
+                    echo "$CZBI_VERSION"
                     exit 0
                     ;;
 
