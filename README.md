@@ -2,14 +2,14 @@
 
 ## Clone, Zig Build, Install
 
-Install Zig-built executables.
+Install Zig-built-from-source executables.
 
-It works best for projects with standalone executables, simple dependencies,
-and no other better way documented on how to install them.
+czbi works best for projects with standalone executables, simple (or no)
+dependencies, and no other alternative documented on how to install them.
 
 I made this because there are many interesting executables being created that
 are Zig projects (or use build.zig) and I want to try them out before they
-stabilize or land in a Linux distro or something.
+stabilize and land in a Linux distro or something.
 
 ## Usage
 
