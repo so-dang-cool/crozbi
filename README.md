@@ -11,6 +11,10 @@ I made this because there are many interesting executables being created that
 are Zig projects (or use build.zig) and I want to try them out before they
 stabilize and land in a Linux distro or something.
 
+### [Wiki](https://github.com/booniepepper/czbi/wiki)
+
+### [Forum](https://github.com/booniepepper/czbi/discussions)
+
 ## Usage
 
 ```
