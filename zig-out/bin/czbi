@@ -71,6 +71,10 @@ set -x
 
 REPO="$1"
 
+
+# ===  Clone  === #
+
+
 mkdir -p "$CZBI_HOME"
 cd "$CZBI_HOME" || exit 1
 
@@ -94,7 +98,17 @@ else
     cd "$REPO" || exit 1
 fi
 
+
+# ===  Zig build  === #
+
+
+zig version
+
 zig build
+
+
+# ===  Install  === #
+
 
 for exe in $(find zig-out/bin -type f)
 do
