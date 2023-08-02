@@ -45,18 +45,18 @@ print_usage() {
 }
 
 case "$1" in
-    help)       print_usage
-                exit 0
-                ;;
+    help|--help|-h) print_usage
+                    exit 0
+                    ;;
 
-    home)       echo "$CZBI_HOME"
-                exit 0
-                ;;
+    home)           echo "$CZBI_HOME"
+                    exit 0
+                    ;;
 
-    uninstall)  set -x
-                rm "$CZBI_BIN/$2"
-                exit 0
-                ;;
+    uninstall)      set -x
+                    rm "$CZBI_BIN/$2"
+                    exit 0
+                    ;;
 esac
 
 # Ok we're installing!
