@@ -23,6 +23,9 @@ USAGE: czbi REPO
 czbi is a script for installing Zig-built executables. To customize it, edit
 the script or fork the repository for yourself.
 
+See https://github.com/booniepepper/czbi for discussion, wiki, issues, or to
+fork the project for your own needs.
+
 czbi REPO
     Clone, zig build, and install whatever is produced by REPO. The clone
     and zig build happens in a directory prefixed by $XDG_DATA_HOME/czbi/$REPO
