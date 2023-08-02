@@ -55,13 +55,23 @@ czbi uninstall EXE
 The recommended way to install czbi is to run something like this in bash:
 
 ```
+CZBI_BIN="$HOME/.local/bin"
 CZBI_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}/czbi"
 CZBI_REPO="booniepepper/czbi"
 
 mkdir -p "$CZBI_HOME"
-cd "$CZBI_HOME"
+git clone "https://github.com/$CZBI_REPO" "$CZBI_HOME/$CZBI_REPO"
+ln -s "$CZBI_BIN/czbi" "$CZBI_HOME/$CZBI_REPO/zig-out/bin/czbi"
+```
 
+Minus a zig build, that is basically what czbi does anyway.
 
+## Updating
+
+With czbi installed, you can update to the most recent version with:
+
+```
+czbi booniepepper/czbi
 ```
 
 ## Notes on safety and being excellent
