@@ -4,7 +4,6 @@ set -euo pipefail
 
 CZBI_BIN="$HOME/.local/bin"
 CZBI_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}/czbi"
-CZBI_REPO="booniepepper/czbi"
 
 case "$1" in
     home)       echo "$CZBI_HOME"
@@ -21,18 +20,18 @@ esac
 
 set -x
 
-repo="$1"
+REPO="$1"
 
 mkdir -p "$CZBI_HOME"
 cd "$CZBI_HOME" || exit 1
 
-if [[ -d $CZBI_REPO ]]
+if [[ -d $REPO ]]
 then
-    cd "$CZBI_REPO" || exit 1
+    cd "$REPO" || exit 1
     git pull
 else
-    git clone "https://github.com/$CZBI_REPO" "$CZBI_REPO"
-    cd "$CZBI_REPO" || exit 1
+    git clone "https://github.com/$REPO" "$REPO"
+    cd "$REPO" || exit 1
 fi
 
 zig build
