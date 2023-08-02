@@ -38,6 +38,7 @@ fi
 zig build
 
 for exe in $(find zig-out/bin -type f)
+do
     ln -s "$PWD/$exe" "$CZBI_BIN/"
-end
+done
 
