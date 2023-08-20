@@ -1,6 +1,6 @@
-# crozbi
-
 <img align="right" src="img/bing-crosby.jpg" width="256">
+
+# crozbi
 
 ## Clone RepO, Zig Build, Install
 
