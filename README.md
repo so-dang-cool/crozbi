@@ -11,7 +11,7 @@ I made this because there are many interesting executables being created that
 are Zig projects (or use build.zig) and I want to try them out before they
 stabilize and land in a Linux distro or something.
 
-### [Wiki](https://github.com/booniepepper/crozbi/wiki)
+### [Wiki](https://github.com/so-dang-cool/crozbi/wiki)
 
 ## Usage
 
@@ -25,7 +25,7 @@ USAGE: crozbi REPO
 crozbi is a script for installing Zig-built executables. To customize it, edit
 the script or fork the repository for yourself.
 
-See https://github.com/booniepepper/crozbi for discussion, wiki, issues, or to
+See https://github.com/so-dang-cool/crozbi for discussion, wiki, issues, or to
 fork the project for your own needs.
 
 crozbi REPO
@@ -68,7 +68,7 @@ like this in bash:
 ```
 CROZBI_BIN="$HOME/.local/bin"
 CROZBI_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}/crozbi"
-CROZBI_REPO="booniepepper/crozbi"
+CROZBI_REPO="so-dang-cool/crozbi"
 
 mkdir -p "$CROZBI_HOME"
 git clone "https://github.com/$CROZBI_REPO" "$CROZBI_HOME/$CROZBI_REPO"
@@ -82,7 +82,7 @@ Minus a Zig build, that is basically everything crozbi does.
 With crozbi installed, you can update to the most recent version with:
 
 ```
-crozbi booniepepper/crozbi
+crozbi so-dang-cool/crozbi
 ```
 
 If you've forked the repository, update the REPO argument as needed.
