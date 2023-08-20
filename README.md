@@ -13,8 +13,6 @@ stabilize and land in a Linux distro or something.
 
 ### [Wiki](https://github.com/booniepepper/crozbi/wiki)
 
-### [Forum](https://github.com/booniepepper/crozbi/discussions)
-
 ## Usage
 
 ```
