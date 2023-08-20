@@ -1,5 +1,7 @@
 # crozbi
 
+<img align="right" src="img/bing-crosby.jpg" width="256">
+
 ## Clone RepO, Zig Build, Install
 
 Installer for _simple_ Zig-built-from-source executables.
