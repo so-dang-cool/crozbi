@@ -2,7 +2,7 @@
 
 set -e
 
-CROZBI_VERSION='1.0'
+CROZBI_VERSION='1.1'
 CROZBI_BIN="$HOME/.local/bin"
 CROZBI_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}/crozbi"
 

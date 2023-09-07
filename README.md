@@ -18,7 +18,7 @@ stabilize and land in a Linux distro or something.
 ## $Usage$
 
 ```
-crozbi 1.0
+crozbi 1.1
 
 USAGE: crozbi REPO
        crozbi home
@@ -58,7 +58,7 @@ crozbi uninstall EXE
 
 ## $Requirements$
 
-1. [bash](https://www.gnu.org/software/bash/)
+1. Some POSIX-compliant `sh` (bash, zsh, dash, etc)
 2. [git](https://git-scm.com/)
 3. [zig](https://ziglang.org/)
 
