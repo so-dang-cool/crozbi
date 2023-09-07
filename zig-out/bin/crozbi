@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
-set -euo pipefail
+set -e
 
 CROZBI_VERSION='1.0'
 CROZBI_BIN="$HOME/.local/bin"
@@ -8,49 +8,49 @@ CROZBI_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}/crozbi"
 
 print_usage() {
     echo "crozbi $CROZBI_VERSION"
-    echo ''
-    echo 'USAGE: crozbi REPO'
-    echo '       crozbi home'
-    echo '       crozbi uninstall EXE'
-    echo ''
-    echo 'crozbi is a script for installing Zig-built executables. To customize it, edit'
-    echo 'the script or fork the repository for yourself.'
-    echo ''
-    echo 'See https://github.com/so-dang-cool/crozbi for wiki, issues, or to fork the'
-    echo 'project for your own needs.'
-    echo ''
-    echo 'crozbi REPO'
-    echo '    Clone, zig build, and install whatever is produced by REPO. The clone'
-    echo '    and zig build happens in a directory prefixed by $XDG_DATA_HOME/crozbi/$REPO'
-    echo '    or if XDG_DATA_HOME is unset/empty then $HOME/.local/share/crozbi/$REPO'
-    echo ''
-    echo '    If REPO is in the format name/project then it will be expanded as a github'
-    echo '    https url like https://github.com/name/project -- Other formats are passed'
-    echo '    to git clone directly.'
-    echo ''
-    echo '    If the REPO is already cloned, instead of a git clone, a git pull will be'
-    echo '    performed.'
-    echo ''
-    echo '    The build performed will simply be "zig build" with no other arguments.'
-    echo ''
-    echo '    After a build, crozbi will produce symbolic links in $HOME/.local/bin for any'
-    echo '    binaries found in a project-local zig-out/bin/ directory.'
-    echo ''
-    echo '    Any conflicts are replaced with a warning.'
-    echo ''
-    echo 'crozbi home'
-    echo '    Prints the directory crozbi will use for cloning repositories.'
-    echo ''
-    echo 'crozbi uninstall EXE'
-    echo '    Uninstall EXE by deleting a symlink at $HOME/.local/bin/$EXE'
-    echo ''
-    echo 'EXAMPLES:'
-    echo ''
-    echo 'crozbi so-dang-cool/crozbi'
-    echo ''
-    echo '    This reinstalls crozbi itself. Use this to update/upgrade.'
-    echo ''
-    echo 'Find and share more examples at https://github.com/so-dang-cool/crozbi/wiki'
+    echo
+    echo "USAGE: crozbi REPO"
+    echo "       crozbi home"
+    echo "       crozbi uninstall EXE"
+    echo
+    echo "crozbi is a script for installing Zig-built executables. To customize it, edit"
+    echo "the script or fork the repository for yourself."
+    echo
+    echo "See https://github.com/so-dang-cool/crozbi for wiki, issues, or to fork the"
+    echo "project for your own needs."
+    echo
+    echo "crozbi REPO"
+    echo "    Clone, zig build, and install whatever is produced by REPO. The clone"
+    echo "    and zig build happens in a directory prefixed by \$XDG_DATA_HOME/crozbi/\$REPO"
+    echo "    or if XDG_DATA_HOME is unset/empty then \$HOME/.local/share/crozbi/\$REPO"
+    echo
+    echo "    If REPO is in the format name/project then it will be expanded as a github"
+    echo "    https url like https://github.com/name/project -- Other formats are passed"
+    echo "    to git clone directly."
+    echo
+    echo "    If the REPO is already cloned, instead of a git clone, a git pull will be"
+    echo "    performed."
+    echo
+    echo "    The build performed will simply be \"zig build\" with no other arguments."
+    echo
+    echo "    After a build, crozbi will produce symbolic links in \$HOME/.local/bin for any"
+    echo "    binaries found in a project-local zig-out/bin/ directory."
+    echo
+    echo "    Any conflicts are replaced with a warning."
+    echo
+    echo "crozbi home"
+    echo "    Prints the directory crozbi will use for cloning repositories."
+    echo
+    echo "crozbi uninstall EXE"
+    echo "    Uninstall EXE by deleting a symlink at \$HOME/.local/bin/\$EXE"
+    echo
+    echo "EXAMPLES:"
+    echo
+    echo "crozbi so-dang-cool/crozbi"
+    echo
+    echo "    This reinstalls crozbi itself. Use this to update/upgrade."
+    echo
+    echo "Find and share more examples at https://github.com/so-dang-cool/crozbi/wiki"
 }
 
 if [ "$#" -eq 0 ]
@@ -92,7 +92,7 @@ REPO="$1"
 mkdir -p "$CROZBI_HOME"
 cd "$CROZBI_HOME" || exit 1
 
-if [[ $REPO =~ ^[A-Za-z0-9_-]+/[A-Za-z0-9_-]+$ ]]
+if expr "$REPO" : '[A-Za-z0-9_-]\+/[A-Za-z0-9_-]\+$'
 then
     REPO_URL="https://github.com/$REPO.git"
 else
@@ -103,7 +103,7 @@ fi
 echo "REPO:       $REPO"
 echo "REPO_URL:   $REPO_URL"
 
-if [[ -d $REPO ]]
+if [ -d "$REPO" ]
 then
     cd "$REPO" || exit 1
     git pull
@@ -124,14 +124,15 @@ zig build
 # ===  Install  === #
 
 
-for exe in $(find zig-out/bin -type f)
+for exe in zig-out/bin/*
 do
+    [ "$exe" = "zig-out/bin/*" ] && continue
+
     existing="$CROZBI_BIN/$(basename "$exe")"
-    if [[ -f $existing ]]
+    if [ -f "$existing" ]
     then
         rm "$existing"
     fi
 
     ln -s "$PWD/$exe" "$CROZBI_BIN/"
 done
-
