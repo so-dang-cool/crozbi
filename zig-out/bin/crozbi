@@ -53,6 +53,12 @@ print_usage() {
     echo 'Find and share more examples at https://github.com/so-dang-cool/crozbi/wiki'
 }
 
+if [ "$#" -eq 0 ]
+then
+    print_usage
+    exit 0
+fi
+
 case "$1" in
     help|--help|-h) print_usage
                     exit 0
