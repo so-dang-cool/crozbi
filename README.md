@@ -18,7 +18,7 @@ stabilize and land in a Linux distro or something.
 ## $Usage$
 
 ```
-crozbi 1.1
+crozbi 1.2
 
 USAGE: crozbi REPO
        crozbi home
