@@ -92,7 +92,7 @@ REPO="$1"
 mkdir -p "$CROZBI_HOME"
 cd "$CROZBI_HOME" || exit 1
 
-if expr "$REPO" : '\([A-Za-z0-9_-][A-Za-z0-9_-]*/[A-Za-z0-9_-][A-Za-z0-9_-]*\)$'
+if expr "$REPO" : '\([A-Za-z0-9_-]\{1,\}/[A-Za-z0-9_-]\{1,\}\)$'
 then
     REPO_URL="https://github.com/$REPO.git"
 else
