@@ -18,7 +18,7 @@ stabilize and land in a Linux distro or something.
 ## Usage
 
 ```
-crozbi 1.2
+crozbi 1.3
 
 USAGE: crozbi REPO
        crozbi home
@@ -39,7 +39,7 @@ crozbi REPO
     https url like https://github.com/name/project -- Other formats are passed
     to git clone directly.
 
-    If the REPO is already cloned, instead of a git clone, a git pull will be
+    If the REPO is already cloned, instead of a git clone, a git rebase will be
     performed.
 
     The build performed will simply be 'zig build' with no other arguments.

@@ -2,7 +2,7 @@
 
 set -e
 
-CROZBI_VERSION='1.2'
+CROZBI_VERSION='1.3'
 CROZBI_BIN="$HOME/.local/bin"
 CROZBI_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}/crozbi"
 
@@ -28,7 +28,7 @@ print_usage() {
     echo "    https url like https://github.com/name/project -- Other formats are passed"
     echo "    to git clone directly."
     echo
-    echo "    If the REPO is already cloned, instead of a git clone, a git pull will be"
+    echo "    If the REPO is already cloned, instead of a git clone, a git rebase will be"
     echo "    performed."
     echo
     echo "    The build performed will simply be \"zig build\" with no other arguments."
@@ -106,7 +106,7 @@ echo "REPO_URL:   $REPO_URL"
 if [ -d "$REPO" ]
 then
     cd "$REPO" || exit 1
-    git pull
+    git rebase
 else
     git clone "$REPO_URL" "$REPO"
     cd "$REPO" || exit 1
