@@ -1,8 +1,8 @@
 <img align="right" src="img/bing-crosby.jpg" width="256">
 
-# crozbi
+# $crozbi$
 
-## Clone RepO, Zig Build, Install
+## $Clone\ RepO\dashrightarrow Zig\ Build \dashrightarrow Install$
 
 Installer for _simple_ Zig-built-from-source executables.
 
@@ -15,7 +15,7 @@ stabilize and land in a Linux distro or something.
 
 ### [Wiki](https://github.com/so-dang-cool/crozbi/wiki)
 
-## Usage
+## $Usage$
 
 ```
 crozbi 1.3
@@ -56,18 +56,18 @@ crozbi uninstall EXE
     Uninstall EXE by deleting a symlink at $HOME/.local/bin/$EXE
 ```
 
-## Requirements
+## $Requirements$
 
 1. Some POSIX-compliant `sh` (bash, zsh, dash, etc)
 2. [git](https://git-scm.com/)
 3. [zig](https://ziglang.org/)
 
-## Installing
+## $Installing$
 
 The recommended way to install crozbi for the first time ever is to run something
 like this in bash:
 
-```
+```sh
 CROZBI_BIN="$HOME/.local/bin"
 CROZBI_HOME="${XDG_DATA_HOME:-"$HOME/.local/share"}/crozbi"
 CROZBI_REPO="so-dang-cool/crozbi"
@@ -79,17 +79,17 @@ ln -s "$CROZBI_HOME/$CROZBI_REPO/zig-out/bin/crozbi" "$CROZBI_BIN/crozbi"
 
 Minus a Zig build, that is basically everything crozbi does.
 
-## Updating
+## $Updating$
 
 With crozbi installed, you can update to the most recent version with:
 
-```
+```sh
 crozbi so-dang-cool/crozbi
 ```
 
 If you've forked the repository, update the REPO argument as needed.
 
-## Notes on safety and being excellent
+## $Notes\ on\ safety\ and\ being\ excellent$
 
 The crozbi project makes zero guarantees of safety. Please be sure that you trust
 a project before compiling it and executing it on your machine.
@@ -105,8 +105,8 @@ another package manager, using a different version of Zig than what you have
 installed, requiring dependencies that aren't modeled, or having some difficult
 to understand build process.)_
 
-## Etc
+## $Etc$
 
-Released under the terms of the [BSD 3-Clause license]()
+Released under the terms of the [BSD 3-Clause license](https://raw.githubusercontent.com/so-dang-cool/crozbi/refs/heads/core/LICENSE)
 
-A 2023 side quest of [J.R. Hill](https://so.dang.cool).
+Began as a 2023 side quest of [J.R. Hill](https://so.dang.cool).
